@@ -22,3 +22,6 @@ env/
 .env
 .env.*
 
+# Dataset files (keep locally, do not upload to GitHub)
+/data/raw/
+/data/processed/
