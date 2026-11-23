@@ -3,6 +3,7 @@ from pathlib import Path
 import sys
 
 import streamlit as st
+import base64
 
 # PROJECT CONFIGURATION
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -74,6 +75,35 @@ st.set_page_config(
     page_icon="🍽️",
     layout="wide"
 )
+
+
+# --------------------------------------------------
+# APPLICATION BACKGROUND
+# --------------------------------------------------
+
+with open("assets/recipe_background_optimized.jpg", "rb") as image_file:
+    background_image = base64.b64encode(image_file.read()).decode()
+
+st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        background:
+            linear-gradient(
+                rgba(255, 255, 255, 0.78),
+                rgba(255, 255, 255, 0.78)
+            ),
+            url("data:image/jpeg;base64,{background_image}");
+
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 
 
 # --------------------------------------------------
